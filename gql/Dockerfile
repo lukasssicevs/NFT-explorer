@@ -13,6 +13,8 @@ RUN npm install --force
 # Copy the rest of the application code
 COPY . .
 
+#RUN chown -R node:node node_modules/.prisma
+
 # Build TypeScript code
 RUN npm run build
 

@@ -17,14 +17,8 @@ services:
         condition: service_started
     ports:
       - "4000:4000"
-    volumes:
-      - ./gql:/gql
-      - ./gql/node_modules:/gql/node_modules
   web:
     build:
       context: ./web
     ports:
       - "3000:3000"
-    volumes:
-      - ./web:/web
-      - ./web/node_modules:/web/node_modules

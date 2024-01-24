@@ -41,7 +41,7 @@ const ClipboardContainer = () => {
     );
   }
 
-  if (data?.clipboard?.items.length === 0) {
+  if (!data?.clipboard?.items || data?.clipboard?.items.length === 0) {
     return (
       <div className="text-center text-2xl w-full block mt-[260px]">
         No items in clipboard!

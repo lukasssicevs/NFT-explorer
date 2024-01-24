@@ -14,10 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the application
-#RUN npm run build
-
-# Copy the build directory to the container
-#COPY .next ./.next
+RUN npm run build
 
 # Define the command to run your app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

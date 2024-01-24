@@ -51,9 +51,21 @@ const CollectionContainer = () => {
     });
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="text-center text-2xl w-full block mt-[260px]">
+        Loading...
+      </div>
+    );
+  }
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) {
+    return (
+      <div className="text-center text-2xl w-full block mt-[260px]">
+        Error: {error.message}
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
