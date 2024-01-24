@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clipboard {
+  id            Int              @id @default(autoincrement())
+  address       String           @unique
+  name          String
+  items         Item[]
+}
+
+model Item {
+  id            Int              @id @default(autoincrement())
+  name          String
+  image         String?
+  comments      String?
+  clipboardId   Int
+  clipboard     Clipboard        @relation(fields: [clipboardId], references: [id])
+}

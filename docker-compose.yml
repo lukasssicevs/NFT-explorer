@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  database:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=satoshi
+      - POSTGRES_PASSWORD=ihsotas
+    ports:
+      - "5432:5432"
+  gql:
+    build:
+      context: ./gql
+    depends_on:
+      database:
+        condition: service_started
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./gql:/gql
+      - ./gql/node_modules:/gql/node_modules
+  web:
+    build:
+      context: ./web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/web
+      - ./web/node_modules:/web/node_modules
